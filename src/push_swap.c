@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:38:34 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 17:02:20 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/04 17:38:32 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,9 @@ int	main(int argc, char **argv)
 
 	argv++;
 	listinit(&lists, &a_list, &b_list, &opcomm_list);
-	if (--argc > 1000 || argc < 1)
+	if (argc == 1)
+		return (0);
+	if (--argc > 1000)
 		puts_errmsg_exit();
 	make_list(&a_list, argv);
 	sortlst(&lists, argc);

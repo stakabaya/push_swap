@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 23:35:57 by stakabay          #+#    #+#             */
-/*   Updated: 2021/01/26 00:13:41 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/04 17:35:07 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <errno.h>
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t size);
