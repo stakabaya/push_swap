@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 13:26:31 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 13:38:32 by stakabay         ###   ########.fr       */
+/*   Created: 2020/07/15 20:00:38 by stakabay          #+#    #+#             */
+/*   Updated: 2021/11/04 15:04:23 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "libft.h"
 
-void	puts_errmsg_exit(void)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
-}
+	unsigned char	*str;
+	unsigned char	chr;
 
-int	catch_error(int rt)
-{
-	if (rt <= 0)
-		puts_errmsg_exit();
-	return (1);
-}
-
-int	catch_null(void	*str)
-{
-	if (str == NULL)
-		puts_errmsg_exit();
-	return (1);
+	str = (unsigned char *)s;
+	chr = (unsigned char)c;
+	while (n--)
+	{
+		if (*str == chr)
+			return (str);
+		str++;
+	}
+	return (0);
 }

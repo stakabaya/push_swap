@@ -6,11 +6,11 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 16:35:16 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/03 16:35:22 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/04 13:42:30 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <push_swap.h>
+#include <push_swap.h>
 
 void	case_one(t_node_type *list, t_opcomm *oplst, char *com)
 {
@@ -46,12 +46,12 @@ void	case_four(t_node_type *list, t_opcomm *oplst, char *com)
 {
 	if (!strcmp(com, "a"))
 	{
-		swap_a(list, oplst);	
+		swap_a(list, oplst);
 		rotate(list, oplst, "ra");
 	}
 	else
 	{
-		swap_b(list, oplst);	
+		swap_b(list, oplst);
 		rotate(list, oplst, "rb");
 	}
 }

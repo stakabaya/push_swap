@@ -6,12 +6,11 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 16:33:26 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/03 16:33:30 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/04 13:38:50 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <push_swap.h>
-
+#include <push_swap.h>
 
 void	search_min_max(int *min, int *max, t_node_type *list)
 {

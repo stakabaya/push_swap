@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 13:26:31 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 13:38:32 by stakabay         ###   ########.fr       */
+/*   Created: 2020/07/04 18:01:22 by stakabay          #+#    #+#             */
+/*   Updated: 2020/07/08 00:09:56 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "libft.h"
 
-void	puts_errmsg_exit(void)
+void	*ft_memcpy(void *buf1, const void *buf2, size_t n)
 {
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
-}
+	unsigned char		*tmp1;
+	const unsigned char	*tmp2;
 
-int	catch_error(int rt)
-{
-	if (rt <= 0)
-		puts_errmsg_exit();
-	return (1);
-}
-
-int	catch_null(void	*str)
-{
-	if (str == NULL)
-		puts_errmsg_exit();
-	return (1);
+	if (buf1 == NULL && buf2 == NULL)
+		return (NULL);
+	tmp1 = buf1;
+	tmp2 = buf2;
+	while (n != 0)
+	{
+		*tmp1 = *tmp2;
+		n--;
+		tmp1++;
+		tmp2++;
+	}
+	return (buf1);
 }

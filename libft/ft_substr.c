@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 13:26:31 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 13:38:32 by stakabay         ###   ########.fr       */
+/*   Created: 2020/07/15 20:37:23 by stakabay          #+#    #+#             */
+/*   Updated: 2020/07/15 20:37:51 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "libft.h"
 
-void	puts_errmsg_exit(void)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
-}
+	char	*sub;
+	size_t	s_len;
 
-int	catch_error(int rt)
-{
-	if (rt <= 0)
-		puts_errmsg_exit();
-	return (1);
-}
-
-int	catch_null(void	*str)
-{
-	if (str == NULL)
-		puts_errmsg_exit();
-	return (1);
+	if (s == NULL)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (s_len < start)
+		len = 0;
+	else if (s_len - start < len)
+		len = s_len - start;
+	sub = malloc(len + 1);
+	if (sub == NULL)
+		return (NULL);
+	memcpy(sub, s + start, len);
+	*(sub + len) = '\0';
+	return (sub);
 }
