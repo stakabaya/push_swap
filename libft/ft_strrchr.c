@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 13:26:31 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 13:38:32 by stakabay         ###   ########.fr       */
+/*   Created: 2020/07/15 20:35:37 by stakabay          #+#    #+#             */
+/*   Updated: 2020/07/15 20:36:19 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "libft.h"
 
-void	puts_errmsg_exit(void)
+char	*ft_strrchr(const char *s, int c)
 {
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
-}
+	char	*str;
+	int		len;
 
-int	catch_error(int rt)
-{
-	if (rt <= 0)
-		puts_errmsg_exit();
-	return (1);
-}
-
-int	catch_null(void	*str)
-{
-	if (str == NULL)
-		puts_errmsg_exit();
-	return (1);
+	str = (char *)s;
+	if (c == 0)
+		return (str + ft_strlen(s));
+	len = ft_strlen(s);
+	while (len-- != 0)
+	{
+		if (*(str + len) == c)
+			return (str + len);
+	}
+	return (0);
 }

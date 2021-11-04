@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 13:26:31 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 13:38:32 by stakabay         ###   ########.fr       */
+/*   Created: 2020/07/04 21:19:11 by stakabay          #+#    #+#             */
+/*   Updated: 2021/11/04 15:08:52 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "libft.h"
 
-void	puts_errmsg_exit(void)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
-}
+	const unsigned char	*str1;
+	const unsigned char	*str2;
 
-int	catch_error(int rt)
-{
-	if (rt <= 0)
-		puts_errmsg_exit();
-	return (1);
-}
-
-int	catch_null(void	*str)
-{
-	if (str == NULL)
-		puts_errmsg_exit();
-	return (1);
+	str1 = (const unsigned char *)s1;
+	str2 = (const unsigned char *)s2;
+	while (--n && *str1 == *str2)
+	{
+		str1++;
+		str2++;
+	}
+	return (*str1 - *str2);
 }

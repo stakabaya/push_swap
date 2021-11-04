@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 13:26:31 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 13:38:32 by stakabay         ###   ########.fr       */
+/*   Created: 2020/07/04 18:01:22 by stakabay          #+#    #+#             */
+/*   Updated: 2020/07/15 20:06:16 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "libft.h"
 
-void	puts_errmsg_exit(void)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
-}
+	unsigned char	*dst2;
+	unsigned char	*src2;
 
-int	catch_error(int rt)
-{
-	if (rt <= 0)
-		puts_errmsg_exit();
-	return (1);
-}
-
-int	catch_null(void	*str)
-{
-	if (str == NULL)
-		puts_errmsg_exit();
-	return (1);
+	if (dst <= src)
+		ft_memcpy(dst, src, len);
+	else
+	{
+		dst2 = (unsigned char *)dst + (len - 1);
+		src2 = (unsigned char *)src + (len - 1);
+		while (len--)
+			*dst2-- = *src2--;
+	}
+	return (dst);
 }

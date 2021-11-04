@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 13:26:31 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 13:38:32 by stakabay         ###   ########.fr       */
+/*   Created: 2020/07/15 20:27:58 by stakabay          #+#    #+#             */
+/*   Updated: 2021/11/04 15:03:31 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "libft.h"
 
-void	puts_errmsg_exit(void)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
-}
+	char			*p;
+	unsigned int	len;
+	unsigned int	i;
 
-int	catch_error(int rt)
-{
-	if (rt <= 0)
-		puts_errmsg_exit();
-	return (1);
-}
-
-int	catch_null(void	*str)
-{
-	if (str == NULL)
-		puts_errmsg_exit();
-	return (1);
+	if (s == NULL)
+		return (NULL);
+	len = ft_strlen(s);
+	p = (char *)malloc(len + 1);
+	if (!p)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		if (f == NULL)
+			p[i] = s[i];
+		else
+			p[i] = (*f)(i, s[i]);
+		i++;
+	}
+	p[len] = '\0';
+	return (p);
 }
