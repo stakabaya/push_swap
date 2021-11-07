@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:38:34 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/07 22:24:07 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/07 22:56:12 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	is_str_num(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] && (str[i] == '-' ||  str[i] == '+') && str[i + 1])
+	if (str[i] && (str[i] == '-' || str[i] == '+') && str[i + 1])
 		i++;
 	while (str[i])
 	{
