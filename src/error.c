@@ -6,28 +6,32 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:26:31 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 13:38:32 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/07 22:46:57 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/push_swap.h"
 #include <push_swap.h>
 
-void	puts_errmsg_exit(void)
+void	error_end_program(t_lists *lists)
 {
 	write(2, "Error\n", 6);
+	clear_opcomm_list(lists->opcom_list);
+	clear_stack_list(lists->a_list);
+	clear_stack_list(lists->b_list);
 	exit(EXIT_FAILURE);
 }
 
-int	catch_error(int rt)
+int	catch_error(int rt, t_lists *lists)
 {
 	if (rt <= 0)
-		puts_errmsg_exit();
+		error_end_program(lists);
 	return (1);
 }
 
-int	catch_null(void	*str)
+int	catch_null(void	*str, t_lists *lists)
 {
 	if (str == NULL)
-		puts_errmsg_exit();
+		error_end_program(lists);
 	return (1);
 }

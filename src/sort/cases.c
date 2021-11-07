@@ -6,60 +6,61 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 16:35:16 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 13:42:30 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/07 22:18:53 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/push_swap.h"
 #include <push_swap.h>
 
-void	case_one(t_node_type *list, t_opcomm *oplst, char *com)
+void	case_one(t_lists *lists, char *com)
 {
-	if (!strcmp(com, "a"))
-		swap_a(list, oplst);
+	if (!ft_strcmp(com, "a"))
+		swap_a(lists);
 	else
-		swap_b(list, oplst);
+		swap_b(lists);
 }
 
-void	case_two(t_node_type *list, t_opcomm *oplst, char *com)
+void	case_two(t_lists *lists, char *com)
 {
-	if (!strcmp(com, "a"))
+	if (!ft_strcmp(com, "a"))
 	{
-		swap_a(list, oplst);
-		rotate_rev(list, oplst, "rra");
+		swap_a(lists);
+		rotate_rev(lists->a_list, lists, "rra");
 	}
 	else
 	{
-		swap_b(list, oplst);
-		rotate_rev(list, oplst, "rrb");
+		swap_b(lists);
+		rotate_rev(lists->b_list, lists, "rrb");
 	}
 }
 
-void	case_three(t_node_type *list, t_opcomm *oplst, char *com)
+void	case_three(t_lists *lists, char *com)
 {
-	if (!strcmp(com, "a"))
-		rotate(list, oplst, "ra");
+	if (!ft_strcmp(com, "a"))
+		rotate(lists->a_list, lists, "ra");
 	else
-		rotate(list, oplst, "rb");
+		rotate(lists->b_list, lists, "rb");
 }
 
-void	case_four(t_node_type *list, t_opcomm *oplst, char *com)
+void	case_four(t_lists *lists, char *com)
 {
-	if (!strcmp(com, "a"))
+	if (!ft_strcmp(com, "a"))
 	{
-		swap_a(list, oplst);
-		rotate(list, oplst, "ra");
+		swap_a(lists);
+		rotate(lists->a_list, lists, "ra");
 	}
 	else
 	{
-		swap_b(list, oplst);
-		rotate(list, oplst, "rb");
+		swap_b(lists);
+		rotate(lists->b_list, lists, "rb");
 	}
 }
 
-void	case_five(t_node_type *list, t_opcomm *oplst, char *com)
+void	case_five(t_lists *lists, char *com)
 {	
-	if (!strcmp(com, "a"))
-		rotate_rev(list, oplst, "rra");
+	if (!ft_strcmp(com, "a"))
+		rotate_rev(lists->a_list, lists, "rra");
 	else
-		rotate_rev(list, oplst, "rrb");
+		rotate_rev(lists->b_list, lists, "rrb");
 }

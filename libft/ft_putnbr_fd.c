@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 16:56:34 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 15:08:26 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/04 23:09:20 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_putnbr_fd(int n, int fd)
 	{
 		setnum(num, 10, -214748364);
 		num[10] = '8';
-		write(fd, num, strlen(num));
+		write(fd, num, ft_strlen(num));
 		return ;
 	}
 	keta = 1;
@@ -57,5 +57,5 @@ void	ft_putnbr_fd(int n, int fd)
 		keta++;
 	}
 	setnum(num, keta, n);
-	write(fd, num, strlen(num));
+	write(fd, num, ft_strlen(num));
 }

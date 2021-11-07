@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 20:18:44 by stakabay          #+#    #+#             */
-/*   Updated: 2020/07/15 20:18:55 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/04 23:07:43 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_putstr_fd(char *s, int fd)
 {
 	if (s != NULL)
-		write(fd, s, strlen(s));
+		write(fd, s, ft_strlen(s));
 }

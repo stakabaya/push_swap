@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:38:34 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 17:38:32 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/07 22:24:07 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	is_str_num(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] && str[i] == '-' && str[i + 1])
+	if (str[i] && (str[i] == '-' ||  str[i] == '+') && str[i + 1])
 		i++;
 	while (str[i])
 	{
@@ -41,7 +41,7 @@ int	is_str_num(char *str)
 	return (1);
 }
 
-void	make_list(t_node_type *head, char **agv)
+void	make_list(t_node_type *head, t_lists *lists, char **agv)
 {
 	long	num;
 	int		errno;
@@ -49,11 +49,11 @@ void	make_list(t_node_type *head, char **agv)
 	errno = 0;
 	while (*agv != NULL)
 	{
-		catch_error(is_str_num(*agv));
+		catch_error(is_str_num(*agv), lists);
 		num = ft_atoi(*agv);
 		if (errno != 0)
-			puts_errmsg_exit();
-		add_tail(head, num);
+			error_end_program(lists);
+		add_tail(head, lists, num);
 		agv++;
 	}
 }
@@ -86,12 +86,11 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	if (--argc > 1000)
-		puts_errmsg_exit();
-	make_list(&a_list, argv);
+		error_end_program(&lists);
+	make_list(&a_list, &lists, argv);
 	sortlst(&lists, argc);
 	opcommlst_shorten(&opcomm_list);
 	print_op_list(&opcomm_list);
 	end_program(&lists);
-	system("leaks a.out");
 	return (0);
 }

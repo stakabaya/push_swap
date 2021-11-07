@@ -6,10 +6,11 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:26:39 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 13:42:19 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/05 18:32:52 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/push_swap.h"
 #include <push_swap.h>
 
 void	print_op_list(t_opcomm *head)
@@ -36,18 +37,18 @@ t_opcomm	*opsearch_tail(t_opcomm *head)
 	return (node);
 }
 
-int	op_add_tail(t_opcomm *head, char *command)
+int	op_add_tail(t_lists *lists, char *command)
 {
 	t_opcomm	*node;
 	t_opcomm	*tail;
 
-	tail = opsearch_tail(head);
+	tail = opsearch_tail(lists->opcom_list);
 	node = malloc(sizeof(t_opcomm));
 	if (node == NULL)
-		puts_errmsg_exit();
-	node->op = strdup(command);
+		error_end_program(lists);
+	node->op = ft_strdup(command);
 	if (node->op == NULL)
-		puts_errmsg_exit();
+		error_end_program(lists);
 	node->next = NULL;
 	tail->next = node;
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 16:28:18 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 16:55:35 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/05 18:18:47 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,28 @@ int	is_sorted(t_node_type *list)
 	return (1);
 }
 
-void	check_dup(t_node_type *list)
+void	check_dup(t_lists *lists)
 {
 	t_node_type	*node;
 	t_node_type	*node_next;
 	int			value;
 
-	node = list->next;
-	while (node != list)
+	node = lists->a_list->next;
+	while (node != lists->a_list)
 	{
 		value = node->value;
 		node_next = node->next;
-		while (node_next != list)
+		while (node_next != lists->a_list)
 		{
 			if (value == node_next->value)
-				puts_errmsg_exit();
+				error_end_program(lists);
 			node_next = node_next->next;
 		}
 		node = node->next;
 	}
 }
 
-void	six_args(t_node_type *a, t_node_type *b, int ac, t_opcomm *oplst)
+void	six_args(t_lists *lists, int ac)
 {
 	int			min;
 	int			max;
@@ -62,30 +62,30 @@ void	six_args(t_node_type *a, t_node_type *b, int ac, t_opcomm *oplst)
 	i = ac;
 	while (i > 3)
 	{
-		search_min_max(&min, &max, a);
-		while (a->next->value != min)
-			rotate(a, oplst, "ra");
-		push_b(a, b, oplst);
+		search_min_max(&min, &max, lists->a_list);
+		while (lists->a_list->next->value != min)
+			rotate(lists->a_list, lists, "ra");
+		push_b(lists);
 		i--;
 	}
-	three_args(a, oplst, "a");
-	while (b->next != b)
+	three_args(lists->a_list, lists, "a");
+	while (lists->b_list->next != lists->b_list)
 	{
-		push_a(a, b, oplst);
+		push_a(lists);
 	}
 }
 
 void	sortlst(t_lists *lists, int argc)
 {
-	check_dup(lists->a_list);
+	check_dup(lists);
 	if (argc == 1 || is_sorted(lists->a_list))
 		end_program(lists);
 	else if (argc == 2)
-		swap_a(lists->a_list, lists->opcom_list);
+		swap_a(lists);
 	else if (argc == 3)
-		three_args(lists->a_list, lists->opcom_list, "a");
+		three_args(lists->a_list, lists, "a");
 	else if (argc <= 6)
-		six_args(lists->a_list, lists->b_list, argc, lists->opcom_list);
+		six_args(lists, argc);
 	else if (argc > 6)
 		more_args(lists);
 }

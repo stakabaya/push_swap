@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:30:22 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 16:54:36 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/07 22:48:42 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,13 @@ void	clear_opcomm_list(t_opcomm *head)
 		while (node->next != NULL)
 		{
 			tmp = node->next;
+			free(node->op);
+			node->op = NULL;
 			free(node);
 			node = tmp;
 		}
+		free(node->op);
+		node->op = NULL;
 		free(node);
 		node = NULL;
 	}

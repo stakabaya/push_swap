@@ -6,10 +6,11 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 16:33:26 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 13:38:50 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/05 18:16:18 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/push_swap.h"
 #include <push_swap.h>
 
 void	search_min_max(int *min, int *max, t_node_type *list)
@@ -29,28 +30,28 @@ void	search_min_max(int *min, int *max, t_node_type *list)
 	}
 }
 
-void	three_args(t_node_type *list, t_opcomm *oplst, char *com)
+void	three_args(t_node_type *stack, t_lists *lists, char *com)
 {
 	t_node_type		*node;
 	int				min;
 	int				max;
 
-	search_min_max(&min, &max, list);
-	node = list->next;
+	search_min_max(&min, &max, stack);
+	node = stack->next;
 	if (node->next->value == min)
 	{
-		if (list->prev->value == max)
-			case_one(list, oplst, com);
+		if (stack->prev->value == max)
+			case_one(lists, com);
 		else if (node->value == max)
-			case_three(list, oplst, com);
+			case_three(lists, com);
 	}
 	else if (node->value == max)
-		case_two(list, oplst, com);
+		case_two(lists, com);
 	else if (node->next->value == max)
 	{
 		if (node->value == min)
-			case_four(list, oplst, com);
+			case_four(lists, com);
 		else
-			case_five(list, oplst, com);
+			case_five(lists, com);
 	}
 }

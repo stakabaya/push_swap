@@ -6,10 +6,11 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 16:21:17 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/04 13:41:54 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/05 18:35:17 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/push_swap.h"
 #include <push_swap.h>
 
 t_node_type	*delete_node(t_node_type *node)
@@ -50,7 +51,7 @@ t_node_type	*search_node(t_node_type *head, int num)
 	return (NULL);
 }
 
-void	add_tail(t_node_type *head, int num)
+void	add_tail(t_node_type *head, t_lists *lists, int num)
 {
 	t_node_type	*node;
 	t_node_type	*tail;
@@ -58,7 +59,7 @@ void	add_tail(t_node_type *head, int num)
 	tail = search_tail(head);
 	node = malloc(sizeof(t_node_type));
 	if (!node)
-		puts_errmsg_exit();
+		error_end_program(lists);
 	node->value = num;
 	node->next = head;
 	node->prev = tail;
@@ -66,7 +67,7 @@ void	add_tail(t_node_type *head, int num)
 	head->prev = node;
 }
 
-void	add_beginning(t_node_type *head, int num)
+void	add_beginning(t_node_type *head, t_lists *lists, int num)
 {
 	t_node_type	*node;
 	t_node_type	*begin;
@@ -74,7 +75,7 @@ void	add_beginning(t_node_type *head, int num)
 	begin = head->next;
 	node = malloc(sizeof(t_node_type));
 	if (!node)
-		puts_errmsg_exit();
+		error_end_program(lists);
 	node->value = num;
 	node->prev = head;
 	node->next = begin;

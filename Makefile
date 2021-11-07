@@ -10,7 +10,7 @@ OBJS    = $(SRCS:.c=.o)
 NAME    = push_swap
 CC      = gcc
 RM      = rm -f
-CFLAGS = -Wall -Wextra -Werror -I include -g  -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -I include
 
 all: $(NAME)
 
