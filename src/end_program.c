@@ -6,12 +6,25 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:30:22 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/07 22:48:42 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/09 21:48:47 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include <push_swap.h>
+
+void	ft_free_flag(char **ptr, int flag)
+{
+	if (flag)
+	{
+		while (*ptr)
+		{
+			free(*ptr);
+			*ptr = NULL;
+			ptr++;
+		}
+	}
+}
 
 void	clear_stack_list(t_node_type *head)
 {

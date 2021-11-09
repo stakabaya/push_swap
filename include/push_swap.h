@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:14:19 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/07 22:20:07 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/09 22:11:47 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,7 @@ void		print_op_list(t_opcomm *head);
 void		error_end_program(t_lists *lists);
 void		clear_stack_list(t_node_type *head);
 void		clear_opcomm_list(t_opcomm *head);
+t_node_type	*search_tail(t_node_type *head);
+void		ft_free_flag(char **ptr, int flag);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 16:28:18 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/05 18:18:47 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/09 21:47:00 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,13 @@ void	six_args(t_lists *lists, int ac)
 	{
 		search_min_max(&min, &max, lists->a_list);
 		while (lists->a_list->next->value != min)
-			rotate(lists->a_list, lists, "ra");
+		{
+			if (lists->a_list->next->next->value == min || \
+				lists->a_list->next->next->next->value == min)
+				rotate(lists->a_list, lists, "ra");
+			else
+				rotate_rev(lists->a_list, lists, "rra");
+		}
 		push_b(lists);
 		i--;
 	}
