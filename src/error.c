@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:26:31 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/09 22:12:19 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/09 22:51:45 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	catch_error(int rt, t_lists *lists)
 
 int	catch_null(void	*str, t_lists *lists)
 {
-	printf("-%s-", (char *)str);
 	if (str == NULL)
 		error_end_program(lists);
 	return (1);
