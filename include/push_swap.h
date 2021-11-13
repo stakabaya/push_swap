@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:14:19 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/09 22:11:47 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/13 23:32:56 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ void		clear_stack_list(t_node_type *head);
 void		clear_opcomm_list(t_opcomm *head);
 t_node_type	*search_tail(t_node_type *head);
 void		ft_free_flag(char **ptr, int flag);
+int			add_list(t_lists *lists, int num);
 
 #endif

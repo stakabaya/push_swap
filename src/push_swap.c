@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:38:34 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/09 22:24:35 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/13 23:31:56 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,7 @@ int	is_str_num(char *str)
 	return (1);
 }
 
-int	add_list(t_lists *lists, int num)
-{
-	t_node_type	*node;
-	t_node_type	*tail;
-	t_node_type	*head;
-
-	head = lists->a_list;
-	tail = search_tail(head);
-	node = malloc(sizeof(t_node_type));
-	if (!node)
-		return (0);
-	node->value = num;
-	node->next = head;
-	node->prev = tail;
-	tail->next = node;
-	head->prev = node;
-	return (1);
-}
-
-void	make_list(t_lists *lists, char **agv, int flag, int argc)
+void	make_list(t_lists *lists, char **agv, int flag)
 {
 	long	num;
 	int		errno;
@@ -81,8 +62,6 @@ void	make_list(t_lists *lists, char **agv, int flag, int argc)
 		agv++;
 	}
 	ft_free_flag(start, flag);
-	if (argc == 1 || is_sorted(lists->a_list))
-		end_program(lists);
 }
 
 void	listinit(t_lists *lists, t_node_type *ahead, \
@@ -101,6 +80,21 @@ void	listinit(t_lists *lists, t_node_type *ahead, \
 	ohead->op = NULL;
 }
 
+char	**expand_arg(int argc, char **argv, int *flag, t_lists *lists)
+{
+	if (argc == 1 && ft_strchr(*argv, ' '))
+	{
+		argv = ft_split(*argv, ' ');
+		if (argv == NULL || *argv == NULL)
+			error_end_program(lists);
+		argc = 0;
+		while (argv[argc])
+			argc++;
+		(*flag)++;
+	}
+	return (argv);
+}
+
 int	main(int argc, char **argv)
 {
 	t_node_type	a_list;
@@ -109,21 +103,14 @@ int	main(int argc, char **argv)
 	t_lists		lists;
 	int			flag;
 
-	argv++;
 	flag = 0;
 	listinit(&lists, &a_list, &b_list, &opcomm_list);
-	if (--argc > 1000 || argc == 0)
+	if (argc == 0)
+		return (0);
+	if (--argc > 1000)
 		error_end_program(&lists);
-	if ((argc == 1 && ft_strchr(*argv, ' ') && flag++ == 0))
-	{
-		argv = ft_split(*argv, ' ');
-		if (argv == NULL || *argv == NULL)
-			error_end_program(&lists);
-		argc = 0;
-		while (argv[argc])
-			argc++;
-	}
-	make_list(&lists, argv, flag, argc);
+	argv = expand_arg(argc, ++argv, &flag, &lists);
+	make_list(&lists, argv, flag);
 	sortlst(&lists, argc);
 	opcommlst_shorten(&opcomm_list);
 	print_op_list(&opcomm_list);

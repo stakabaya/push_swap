@@ -6,12 +6,31 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:30:22 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/09 21:48:47 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/13 23:32:11 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include <push_swap.h>
+
+int	add_list(t_lists *lists, int num)
+{
+	t_node_type	*node;
+	t_node_type	*tail;
+	t_node_type	*head;
+
+	head = lists->a_list;
+	tail = search_tail(head);
+	node = malloc(sizeof(t_node_type));
+	if (!node)
+		return (0);
+	node->value = num;
+	node->next = head;
+	node->prev = tail;
+	tail->next = node;
+	head->prev = node;
+	return (1);
+}
 
 void	ft_free_flag(char **ptr, int flag)
 {
