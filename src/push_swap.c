@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:38:34 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/16 12:26:29 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/16 21:17:03 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,16 @@ void	listinit(t_lists *lists, t_node_type *ahead, \
 	ohead->op = NULL;
 }
 
-char	**expand_arg(int argc, char **argv, int *flag, t_lists *lists)
+char	**expand_arg(int *argc, char **argv, int *flag, t_lists *lists)
 {
-	if (argc == 1 && ft_strchr(*argv, ' '))
+	if (*argc == 1 && ft_strchr(*argv, ' '))
 	{
 		argv = ft_split(*argv, ' ');
 		if (argv == NULL || *argv == NULL)
 			error_end_program(lists);
-		argc = 0;
-		while (argv[argc])
-			argc++;
+		*argc = 0;
+		while (argv[*argc])
+			(*argc)++;
 		(*flag)++;
 	}
 	return (argv);
@@ -109,7 +109,7 @@ int	main(int argc, char **argv)
 		return (0);
 	if (--argc > 1000)
 		error_end_program(&lists);
-	argv = expand_arg(argc, ++argv, &flag, &lists);
+	argv = expand_arg(&argc, ++argv, &flag, &lists);
 	make_list(&lists, argv, flag);
 	sortlst(&lists, argc);
 	opcommlst_shorten(&opcomm_list, &lists);
