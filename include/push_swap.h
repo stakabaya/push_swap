@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:14:19 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/13 23:32:56 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/16 12:26:47 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		move_chunk(t_lists *lists, int *count, t_node_type *chunklst);
 void		div_up_half(t_lists *lists, int *count, t_node_type *chunklst);
 void		search_min_half(int *min, t_node_type *list, \
 							long *half, int *count);
-void		opcommlst_shorten(t_opcomm *opcomm_list);
+void		opcommlst_shorten(t_opcomm *opcomm_list, t_lists *lists);
 int			op_add_tail(t_lists *lists, char *command);
 void		print_op_list(t_opcomm *head);
 void		error_end_program(t_lists *lists);

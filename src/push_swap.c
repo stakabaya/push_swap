@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:38:34 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/13 23:31:56 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/16 12:26:29 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	main(int argc, char **argv)
 	argv = expand_arg(argc, ++argv, &flag, &lists);
 	make_list(&lists, argv, flag);
 	sortlst(&lists, argc);
-	opcommlst_shorten(&opcomm_list);
+	opcommlst_shorten(&opcomm_list, &lists);
 	print_op_list(&opcomm_list);
 	end_program(&lists);
 }

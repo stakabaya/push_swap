@@ -6,7 +6,7 @@
 /*   By: stakabay <stakabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:17:36 by stakabay          #+#    #+#             */
-/*   Updated: 2021/11/05 09:54:56 by stakabay         ###   ########.fr       */
+/*   Updated: 2021/11/16 12:27:36 by stakabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ss_rr_rrr(t_opcomm *opnode)
 	}
 }
 
-void	opcommlst_shorten(t_opcomm *opcomm_list)
+void	opcommlst_shorten(t_opcomm *opcomm_list, t_lists *lists)
 {
 	t_opcomm	*opnode;
 
@@ -58,7 +58,11 @@ void	opcommlst_shorten(t_opcomm *opcomm_list)
 	while (opnode != NULL)
 	{
 		if (opnode->next != NULL)
+		{
 			ss_rr_rrr(opnode);
+			if (opnode->op == NULL)
+				error_end_program(lists);
+		}
 		opnode = opnode->next;
 	}
 }
